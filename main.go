@@ -19,7 +19,7 @@ func main() {
 	c := colly.NewCollector()
 
 	c.OnHTML("img", func(e *colly.HTMLElement) {
-		download(e.Attr("src"))
+		go download(e.Attr("src"))
 	})
 	// Find and visit all links
 	c.OnHTML("a[href]", func(e *colly.HTMLElement) {
